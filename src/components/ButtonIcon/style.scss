@@ -1,0 +1,67 @@
+.play-icon {
+	width: 24px;
+	height: 24px;
+	background-color: #003164;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+
+	.play {
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 0 5px 8.7px;
+		border-color: transparent transparent transparent #fff;
+		position: relative;
+		top: 5px;
+		left: 7px;
+	}
+
+	.checked {
+		color: #fff;
+
+		&::before {
+			content: '';
+			pointer-events: none;
+			position: absolute;
+			color: white;
+			border: 1px solid;
+			background-color: white;
+			width: 3px;
+			height: 1px;
+			left: 20%;
+			top: 50%;
+			transform: skew(0deg,50deg);
+		}
+
+		&::after {
+			content: '';
+			pointer-events: none;
+			position: absolute;
+			color: white;
+			border: 1px solid;
+			background-color: white;
+			width: 6px;
+			height: 1px;
+			left: 45%;
+			top: 42%;
+			transform: skew(0deg,-50deg);
+		}
+	}
+}
+
+.pink {
+	border-color: #FF4384;
+
+	.choosed {
+		width: 12px;
+		height: 12px;
+		background-color: #FF4384;
+		border-radius: 50%;
+		position: relative;
+		top: 4px;
+		left: 4px;
+	}
+}
