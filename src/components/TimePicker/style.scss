@@ -1,0 +1,29 @@
+.counting__down {
+	width: 102px;
+	height: 102px;
+	background-color: transparent;
+	border-radius: 50%;
+	border: 2px solid #FF4384;
+	box-sizing: border-box;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	&__button {
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		background-color: #FF4384;
+	}
+
+	&__start {
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 18px 0 18px 31.2px;
+		border-color: transparent transparent transparent #fff;
+		position: relative;
+		top: 25px;
+		left: 36px;
+	}
+}
