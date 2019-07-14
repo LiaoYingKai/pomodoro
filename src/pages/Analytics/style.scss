@@ -1,0 +1,26 @@
+.analytics {
+	&__focus {
+		margin: 16px 0 60px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&__title {
+			font-size: 16px;
+			color: #fff;
+		}
+
+		&__content {
+			font-size: 60px;
+			color: #FF4384;
+
+			span {
+				font-size: 16px;
+				color: #335a83;
+			}
+		}
+	}
+
+	&__chart__date{
+		font-size: 16px;
+	}
+}
