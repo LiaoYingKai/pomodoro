@@ -1,9 +1,10 @@
-.input-todo{
+.input__todo{
 	width:100%;
 	padding: 18px 16px;
 	box-sizing: border-box;
 	background-color: #fff;
 	margin-bottom: 48px;
+	display: flex;
 	input{
 		border: 0;
 		font-size: 16px;
@@ -12,10 +13,22 @@
 			outline: none;
 		}
 	}
+	button{
+		font-size: 24px;
+		color: #FF4384;
+		border: none;
+		cursor: pointer;
+		&:focus{
+			outline: none;
+			box-shadow: 0 0 10px #FF4384;
+		}
+	}
 	.pink::placeholder{
+		font-weight: 600;
 		color:#FF4384;
 	}
 	.blue::placeholder{
+		font-weight: 600;
 		color:#00A7FF;
 	}
 }
