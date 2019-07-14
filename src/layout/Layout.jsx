@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Link, Route,Switch, NavLink, isActive } from 'react-router-dom'
+import { Link, Route, Switch, NavLink, isActive } from 'react-router-dom'
 import loadComponent from './loadComponent.js'
 import TodoIcon from '../components/Icon/TodoIcon.js'
 import AnalyticsIcon from '../components/Icon/AnalyticsIcon.js'
