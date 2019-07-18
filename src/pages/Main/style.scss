@@ -7,6 +7,9 @@
 	justify-content: space-between;
 	font-family: sans-serif;
 	z-index: 1;
+	left: 0;
+	transition: 0.5s;
+	opacity: 100;
 
 	&__content {
 		width: 830px;
@@ -46,5 +49,17 @@
 		}
 	}
 
-	&__time__clock {}
+	&__time__clock {
+		top: calc(50% - 270px);
+		right: 180px;
+		position: absolute;
+		width: 540px;
+		height: 540px;
+		z-index: 2;
+	}
+}
+
+.home__page-open {
+	left: -1280px;
+	opacity: 0;
 }

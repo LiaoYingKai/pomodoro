@@ -6,8 +6,9 @@ import AnalyticsIcon from '../components/Icon/AnalyticsIcon.js'
 import RingtonesIcon from '../components/Icon/RingtonesIcon.js'
 import CloseIcon from '../components/Icon/CloseIcon.js'
 import TimePicker from '../components/TimePicker'
+import Main from '../pages/Main'
 
-const Main = loadComponent({loader:()=>import('../pages/Main')})
+// const Main = loadComponent({loader:()=>import('../pages/Main')})
 const TodoList = loadComponent({loader:()=>import('../pages/TodoList')})
 const Analytics = loadComponent({loader:()=>import('../pages/Analytics')})
 const Ringtones = loadComponent({loader:()=>import('../pages/Ringtones')})
@@ -16,6 +17,8 @@ console.log(isActive)
 class Layout extends Component{
 	render(){
 		return(
+			<React.Fragment>
+			<Main></Main>
 			<div className="content">
 				<div className="menu__bar">
 					<ul className="menu__bar__ul">
@@ -49,8 +52,7 @@ class Layout extends Component{
 					</div>
 				</div>
 				<div className="container">
-					<Route exact path="/" component={Main}/>
-					<Route path="/todo-list" component={TodoList}/>
+					<Route exact path="/todo-list" component={TodoList}/>
 					<Route path="/analytics" component={Analytics}/>
 					<Route path="/ringtones" component={Ringtones}/>
 				</div>
@@ -61,6 +63,7 @@ class Layout extends Component{
 					<p>pomodoro</p>
 				</div>
 			</div>
+			</React.Fragment>
 		)
 	}
 }
