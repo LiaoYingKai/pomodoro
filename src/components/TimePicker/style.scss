@@ -1,6 +1,4 @@
-.counting__down {
-	width: 102px;
-	height: 102px;
+.time__picker {
 	background-color: transparent;
 	border-radius: 50%;
 	border: 2px solid #FF4384;
@@ -9,14 +7,34 @@
 	justify-content: center;
 	align-items: center;
 
-	&__button {
+	&__small {
+		width: 102px;
+		height: 102px;
+	}
+
+	&__large {
+		width: 540px;
+		height: 540px;
+	}
+
+	&__inline__circle__small {
 		width: 90px;
 		height: 90px;
 		border-radius: 50%;
 		background-color: #FF4384;
 	}
 
-	&__start {
+	&__inline__circle__large {
+		width: 500px;
+		height: 500px;
+		border-radius: 50%;
+		background-color: #FF4384;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__button__start__small {
 		width: 0;
 		height: 0;
 		border-style: solid;
@@ -25,5 +43,52 @@
 		position: relative;
 		top: 25px;
 		left: 36px;
+		cursor: pointer;
+		
 	}
+
+	&__button__start__large {
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		background-color: #fff;
+		position: relative;
+		cursor: pointer;
+
+		&::before {
+			display: block;
+			content: '';
+			border-width: 25px 0 25px 43.3px;
+			border-style: solid;
+			border-color: transparent transparent transparent #FF4384;
+			position: absolute;
+			left: 36%;
+			top: 18px;
+		}
+	}
+
+		&__button__stop__large {
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background-color: #fff;
+			position: relative;
+			cursor: pointer;
+
+			&::before, &::after {
+				display: inline-block;
+				content: '';
+				width:10px;
+				height:50px;
+				background-color: #FF4384;
+				position: absolute;
+				left: 30%;
+				top: 18px;
+			}
+			&::after{
+				left:60%;
+			}
+
+		}
+
 }
