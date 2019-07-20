@@ -1,34 +1,50 @@
-.input__todo{
-	width:100%;
+@import "../../scss/color.scss";
+.input__todo {
+	width: 100%;
 	padding: 12px 16px;
 	box-sizing: border-box;
-	background-color: #fff;
+	background-color: $WHITE;
 	margin-bottom: 48px;
 	display: flex;
-	input{
+
+	input {
 		border: 0;
 		font-size: 16px;
-		width:100%;
-		&:focus{
+		width: 100%;
+
+		&:focus {
 			outline: none;
 		}
 	}
-	button{
+
+	button {
 		font-size: 24px;
-		color: #FF4384;
 		border: none;
 		cursor: pointer;
-		&:focus{
+		&:focus {
 			outline: none;
-			box-shadow: 0 0 10px #FF4384;
 		}
 	}
-	.pink::placeholder{
-		font-weight: 600;
-		color:#FF4384;
+
+	&__pink {
+		button {
+			color: $DEEP_PINK;
+		}
+
+		input::placeholder {
+			font-weight: 600;
+			color: $DEEP_PINK;
+		}
 	}
-	.blue::placeholder{
-		font-weight: 600;
-		color:#00A7FF;
+
+	&__blue {
+		button {
+			color: $DEEP_AQUA_BLUE;
+		}
+
+		input::placeholder {
+			font-weight: 600;
+			color: $DEEP_AQUA_BLUE;
+		}
 	}
 }

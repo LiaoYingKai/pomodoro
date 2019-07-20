@@ -9,7 +9,7 @@ class Main extends Component {
   render() {
     return (
       <div className="todo__list">
-        <InputTodo className='pink'/>
+        <InputTodo color={InputTodo.ColorEnums.PINK}/>
         <div>
           <Title title='TO-DO'>
             <label htmlFor="tab1"> + </label>

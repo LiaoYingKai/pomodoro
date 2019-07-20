@@ -27,7 +27,7 @@ class Main extends Component {
         <div className={`home__page ${isOpen?'home__page-open': ''}`}>
           <div className="home__page__content">
             <div className="home__page__content__container">
-              <InputTodo/>
+              <InputTodo color={InputTodo.ColorEnums.PINK}/>
               <div className="home__page__content__todo">
                 <div className="home__page__content__todo__title">
                   <div className="home__page__content__todo__title__icon"></div>
