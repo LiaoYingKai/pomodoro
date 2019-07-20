@@ -29,10 +29,10 @@ const defaultProps = {
   color: ColorEnums.PINK,
 }
 
-const TimePicker = ({ size, type }) =>(
-  <div className={`time__picker time__picker__${size}`}>
-    <div className={`time__picker__inline__circle__${size}`}>
-      <div className={`time__picker__button__${type}__${size}`}>
+const TimePicker = ({ size, type, color}) =>(
+  <div className={`time__picker time__picker__${size} time__picker__${color}`}>
+    <div className={`time__picker__inline__circle__${size} time__picker__inline__circle__${color}`}>
+      <div className={`time__picker__button__${type}__${size} time__picker__button__${color}`}>
       </div>
     </div>
   </div>
