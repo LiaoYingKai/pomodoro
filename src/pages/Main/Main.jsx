@@ -85,7 +85,7 @@ class Main extends Component {
             </div>
           </div>
         </div>
-        <div className="home__page__time__clock">
+        <div className={`home__page__time__clock ${isOpen?'home__page-open': ''}`}>
           <TimePicker size={TimePicker.SizeEnums.LARGE} type={TimePicker.TypeEnums.STOP} color={TimePicker.ColorEnums.PINK}/>
         </div>
       </React.Fragment>
