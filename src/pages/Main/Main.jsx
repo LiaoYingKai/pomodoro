@@ -10,9 +10,6 @@ class Main extends Component {
   constructor(){
     super()
     this._handleToggle = this._handleToggle.bind(this)
-    this.state = {
-      isOpen: false
-    }
   }
   _handleToggle(){
     this.setState({
@@ -20,12 +17,11 @@ class Main extends Component {
     })
   }
   render() {
-    const { isOpen } = this.state
-    const { _handleToggle } = this
+    const { isOpen } = this.props
     return (
       <React.Fragment>
         <div className={`home__page ${isOpen?'home__page-open': ''}`}>
-          <div className="home__page__content">
+          <div className={`home__page__content ${isOpen?'home__page-open': ''}`}>
             <div className="home__page__content__container">
               <InputTodo color={InputTodo.ColorEnums.PINK}/>
               <div className="home__page__content__todo">
@@ -65,23 +61,6 @@ class Main extends Component {
                 </div>
                 <p> more </p>
               </div>
-
-            </div>
-          </div>
-          <div className="home__page__menu__bar">
-            <div className="home__page__menu__bar--position">
-              <a onClick={_handleToggle}>
-                <TodoIcon/>
-              </a>
-              <a onClick={_handleToggle}>
-                <AnalyticsIcon/>
-              </a>
-              <a onClick={_handleToggle}>
-                <RingtonesIcon/>
-              </a>
-            </div>
-            <div className="home__page__menu__bar--logo">
-							pomodoro
             </div>
           </div>
         </div>

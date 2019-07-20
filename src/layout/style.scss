@@ -1,6 +1,6 @@
 .content {
 	width: 1280px;
-	height:100vh;
+	height: 100vh;
 	max-height: 800px;
 	margin: 0 auto;
 	background-color: #003164;
@@ -49,45 +49,24 @@
 	width: 445px;
 }
 
-.logo-bar {
-	margin-left: 135px;
-	padding-bottom: 48px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-end;
-
-	a {
-		display: inline-block;
-		fill: #fff;
-	}
-
-	p {
-		text-transform: uppercase;
-		color: #ffffff;
-		font-size: 24px;
-		writing-mode: vertical-rl;
-		line-height: 32px;
-	}
-}
-
 .logo {
 	width: 350px;
 	border-radius: 350px 350px 0 0;
 	height: 175px;
 	background-color: #FFEDF7;
 	text-align: center;
-	.time__backgroundColor{
+
+	.time__backgroundColor {
 		display: inline-block;
-		width:112px;
-		height:108px;
+		width: 112px;
+		height: 108px;
 		border-radius: 50%;
 		background-color: #003164;
 	}
 
-	&__position{
+	&__position {
 		position: relative;
-		top:-45px;
+		top: -45px;
 	}
 
 	&__time {
@@ -100,5 +79,37 @@
 		font-size: 16px;
 		color: #003164;
 		text-transform: uppercase;
+	}
+}
+
+
+.right__bar {
+	width: 48px;
+	margin-left: 135px;
+	padding-bottom: 48px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	&__menu {
+		display: flex;
+		flex-direction: column;
+	}
+	&--disappear{
+		display: none;
+	}
+	a {
+		display: inline-block;
+		fill: #fff;
+		margin-bottom: 48px;
+	}
+
+	p {
+		text-transform: uppercase;
+		color: #ffffff;
+		font-size: 24px;
+		writing-mode: vertical-rl;
+		line-height: 32px;
 	}
 }

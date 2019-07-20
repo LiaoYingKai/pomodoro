@@ -13,12 +13,26 @@ const TodoList = loadComponent({loader:()=>import('../pages/TodoList')})
 const Analytics = loadComponent({loader:()=>import('../pages/Analytics')})
 const Ringtones = loadComponent({loader:()=>import('../pages/Ringtones')})
 
-console.log(isActive)
 class Layout extends Component{
+	constructor(){
+		super();
+		this._handleToggleSwitch = this._handleToggleSwitch.bind(this);
+		this.state = {
+			isOpen: false,
+		}
+	}
+	_handleToggleSwitch(){
+		const { isOpen } = this.state
+		this.setState({
+			isOpen: !isOpen
+		})
+	}
 	render(){
+		const { _handleToggleSwitch } = this
+		const { isOpen } = this.state
 		return(
 			<React.Fragment>
-			<Main></Main>
+			<Main isOpen={isOpen}></Main>
 			<div className="content">
 				<div className="menu__bar">
 					<ul className="menu__bar__ul">
@@ -52,14 +66,27 @@ class Layout extends Component{
 					</div>
 				</div>
 				<div className="container">
-					<Route exact path="/todo-list" component={TodoList}/>
+					<Route path="/todo-list" component={TodoList}/>
 					<Route path="/analytics" component={Analytics}/>
 					<Route path="/ringtones" component={Ringtones}/>
 				</div>
-				<div className="logo-bar">
-					<Link to="/">
-						<CloseIcon/>
-					</Link>
+				<div className="right__bar">
+					<div className={isOpen ? "" : "right__bar--disappear"}>
+						<Link to="/" onClick={_handleToggleSwitch}>
+							<CloseIcon/>
+						</Link>
+					</div>
+					<div className={`right__bar__menu ${isOpen ? "right__bar--disappear" : "" }`}>
+						<Link to="todo-list" onClick={_handleToggleSwitch}>
+							<TodoIcon/>
+						</Link>
+						<Link to="analytics" onClick={_handleToggleSwitch}>
+							<AnalyticsIcon/>
+						</Link>
+						<Link to="ringtones" onClick={_handleToggleSwitch}>
+							<RingtonesIcon/>
+						</Link>
+					</div>
 					<p>pomodoro</p>
 				</div>
 			</div>
