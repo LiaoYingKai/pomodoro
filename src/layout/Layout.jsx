@@ -8,7 +8,6 @@ import CloseIcon from '../components/Icon/CloseIcon.js'
 import TimePicker from '../components/TimePicker'
 import Main from '../pages/Main'
 
-// const Main = loadComponent({loader:()=>import('../pages/Main')})
 const TodoList = loadComponent({loader:()=>import('../pages/TodoList')})
 const Analytics = loadComponent({loader:()=>import('../pages/Analytics')})
 const Ringtones = loadComponent({loader:()=>import('../pages/Ringtones')})
@@ -19,6 +18,14 @@ class Layout extends Component{
 		this._handleToggleSwitch = this._handleToggleSwitch.bind(this);
 		this.state = {
 			isOpen: false,
+		}
+	}
+	componentDidMount(){
+		const path = this.props.location.pathname
+		if(path !== "/"){
+			this.setState({
+				isOpen: true
+			})
 		}
 	}
 	_handleToggleSwitch(){

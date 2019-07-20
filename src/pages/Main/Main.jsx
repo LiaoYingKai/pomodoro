@@ -7,15 +7,6 @@ import TimePicker from '../../components/TimePicker'
 import ButtonIcon from '../../components/ButtonIcon'
 import InputTodo from '../../components/InputTodo'
 class Main extends Component {
-  constructor(){
-    super()
-    this._handleToggle = this._handleToggle.bind(this)
-  }
-  _handleToggle(){
-    this.setState({
-      isOpen: true
-    })
-  }
   render() {
     const { isOpen } = this.props
     return (
@@ -35,14 +26,12 @@ class Main extends Component {
                       <div className="home__page__content__todo__title__count done"></div>
                       <div className="home__page__content__todo__title__count next"></div>
                       <div className="home__page__content__todo__title__count now"></div>
-
                     </div>
                   </div>
                 </div>
                 <div className="home__page__content__todo__countdown"> 25:00 </div>
               </div>
               <div className="home__page__content__todos">
-
                 <div className="home__page__content__todos__container">
                   <div className="home__page__content__todos__todo">
                     <ButtonIcon/>
