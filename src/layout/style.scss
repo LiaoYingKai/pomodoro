@@ -1,87 +1,55 @@
+@import "../scss/color";
+
 .content {
 	width: 1280px;
 	height: 100vh;
 	max-height: 800px;
 	margin: 0 auto;
-	background-color: #003164;
+	background-color: $DEEP_BLUE;
 	display: flex;
 	font-family: sans-serif;
 	padding: 45px 85px 0;
 	box-sizing: border-box;
 }
 
-.menu__bar {
+.menu {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-}
-
-.menu__bar__ul {
 	width: 480px;
 
-	.menu__bar__link {
-		margin-bottom: 42px;
-		line-height: 42px;
-	}
+	ul {
+		width: 100%;
 
-	a {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 36px;
-		text-decoration: none;
-		text-transform: uppercase;
-		color: #335a83;
-		fill: #335a83;
-	}
+		li {
+			margin-bottom: 42px;
+			line-height: 42px;
+		}
 
-	svg {
-		margin-right: 8px;
-	}
+		a {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 36px;
+			text-decoration: none;
+			color: $LIGHT_BLUE;
+			fill: $LIGHT_BLUE;
+		}
 
-	.menu__bar__link--active {
-		color: #FF4384;
-		fill: #FF4384;
+		.menu__link--active {
+			color: $DEEP_PINK;
+			fill: $DEEP_PINK;
+		}
+
+		svg {
+			margin-right: 8px;
+		}
 	}
 }
 
-.container {
+.render__container {
 	width: 445px;
 }
-
-.logo {
-	width: 350px;
-	border-radius: 350px 350px 0 0;
-	height: 175px;
-	background-color: #FFEDF7;
-	text-align: center;
-
-	.time__backgroundColor {
-		display: inline-block;
-		width: 112px;
-		height: 108px;
-		border-radius: 50%;
-		background-color: #003164;
-	}
-
-	&__position {
-		position: relative;
-		top: -45px;
-	}
-
-	&__time {
-		font-size: 64px;
-		color: #FF4384;
-		line-height: 75px;
-	}
-
-	&__todo {
-		font-size: 16px;
-		color: #003164;
-		text-transform: uppercase;
-	}
-}
-
 
 .right__bar {
 	width: 48px;
@@ -96,18 +64,19 @@
 		display: flex;
 		flex-direction: column;
 	}
-	&--disappear{
+
+	&--disappear {
 		display: none;
 	}
+
 	a {
 		display: inline-block;
-		fill: #fff;
+		fill: $WHITE;
 		margin-bottom: 48px;
 	}
 
 	p {
-		text-transform: uppercase;
-		color: #ffffff;
+		color: $WHITE;
 		font-size: 24px;
 		writing-mode: vertical-rl;
 		line-height: 32px;

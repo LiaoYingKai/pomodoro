@@ -5,8 +5,8 @@ import TodoIcon from '../components/Icon/TodoIcon.js'
 import AnalyticsIcon from '../components/Icon/AnalyticsIcon.js'
 import RingtonesIcon from '../components/Icon/RingtonesIcon.js'
 import CloseIcon from '../components/Icon/CloseIcon.js'
-import TimePicker from '../components/TimePicker'
 import Main from '../pages/Main'
+import Logo from '../components/Logo'
 
 const TodoList = loadComponent({loader:()=>import('../pages/TodoList')})
 const Analytics = loadComponent({loader:()=>import('../pages/Analytics')})
@@ -41,38 +41,30 @@ class Layout extends Component{
 			<React.Fragment>
 			<Main isOpen={isOpen}></Main>
 			<div className="content">
-				<div className="menu__bar">
-					<ul className="menu__bar__ul">
-						<li className="menu__bar__link">
-							<NavLink activeClassName="menu__bar__link--active" to="/todo-list">
+				<nav className="menu">
+					<ul>
+						<li>
+							<NavLink activeClassName="menu__link--active" to="/todo-list">
 								<TodoIcon />
 								to-do list
 							</NavLink>
 						</li>
-						<li className="menu__bar__link">
-							<NavLink activeClassName="menu__bar__link--active" to="/analytics">
+						<li>
+							<NavLink activeClassName="menu__link--active" to="/analytics">
 								<AnalyticsIcon />
 								analytics
 							</NavLink>
 						</li>
-						<li className="menu__bar__link">
-							<NavLink activeClassName="menu__bar__link--active" to="/ringtones">
+						<li>
+							<NavLink activeClassName="menu__link--active" to="/ringtones">
 								<RingtonesIcon/>
 								ringtones
 							</NavLink>
 						</li>
 					</ul>
-					<div className="logo">
-						<div className="logo__position">
-							<div className="time__backgroundColor">
-								<TimePicker/>
-							</div>
-							<div className="logo__time">25:00</div>
-							<div className="logo__todo">the First thing to do today</div>
-						</div>
-					</div>
-				</div>
-				<div className="container">
+					<Logo/>
+				</nav>
+				<div className="render__container">
 					<Route path="/todo-list" component={TodoList}/>
 					<Route path="/analytics" component={Analytics}/>
 					<Route path="/ringtones" component={Ringtones}/>

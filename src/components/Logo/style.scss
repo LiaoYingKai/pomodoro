@@ -1,0 +1,52 @@
+@import "../../scss/color";
+@import "../../scss/share";
+
+.logo {
+	width: 350px;
+	border-radius: 350px 350px 0 0;
+	height: 175px;
+	background-color: $LIGHT_PINK;
+	text-align: center;
+
+	&__button {
+		&__backgroundColor {
+			display: inline-block;
+			width: 112px;
+			height: 108px;
+			border-radius: 50%;
+			background-color: $DEEP_BLUE;
+		}
+
+		&__outline {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			@include circle(102px, transparent, $DEEP_PINK, 2px);
+		}
+
+		&__play {
+			@include circle(90px, $DEEP_PINK, transparent, 0px);
+			cursor: pointer;
+
+			&::before {
+				@include triange(20px, 25px, 8px, $WHITE);
+			}
+		}
+	}
+
+	&__position {
+		position: relative;
+		top: -45px;
+	}
+
+	&__time {
+		font-size: 64px;
+		color: $DEEP_PINK;
+		line-height: 75px;
+	}
+
+	&__todo {
+		font-size: 16px;
+		color: $DEEP_BLUE;
+	}
+}
