@@ -6,6 +6,7 @@ import TodoIcon from '../../components/Icon/TodoIcon.js'
 import TimePicker from '../../components/TimePicker'
 import ButtonIcon from '../../components/ButtonIcon'
 import InputTodo from '../../components/InputTodo'
+import Todo from '../../components/Todo'
 class Main extends Component {
   render() {
     const { isOpen } = this.props
@@ -33,22 +34,11 @@ class Main extends Component {
               </div>
               <div className="home__page__content__todos">
                 <div className="home__page__content__todos__container">
-                  <div className="home__page__content__todos__todo">
-                    <ButtonIcon/>
-                    <div className="home__page__content__todos__todo__content">the second thing to do today</div>
-                    <ButtonIcon type={ButtonIcon.ButtonIconEnums.START}/>
-                  </div>
-                  <div className="home__page__content__todos__todo">
-                    <ButtonIcon/>
-                    <div className="home__page__content__todos__todo__content">the second thing to do today</div>
-                    <ButtonIcon type={ButtonIcon.ButtonIconEnums.START}/>
-                  </div><div className="home__page__content__todos__todo">
-                    <ButtonIcon/>
-                    <div className="home__page__content__todos__todo__content">the second thing to do today</div>
-                    <ButtonIcon type={ButtonIcon.ButtonIconEnums.START}/>
-                  </div>
+                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
+                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
+                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
                 </div>
-                <p> more </p>
+                <div className="home__page__content__todos__more"> more </div>
               </div>
             </div>
           </div>

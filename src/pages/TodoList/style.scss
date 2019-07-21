@@ -1,52 +1,46 @@
-.todo__list{
-	label{
-		display : block;
-		width : 20px;
-		text-align : center;
-		border-radius : 5px;
-		background-color : #ccc;
-		cursor : pointer;
-	}
-	&__contnet{
-		height : 0px;
-		overflow : hidden;
-		transition : 0.5s;
-		margin-bottom: 30px;
-	}
-	&__item{
-		padding: 10px 0px;
-		border-bottom: 1px solid #335a83;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		p{
-			width:100%;
-			padding-left: 4px;
-			color: #fff;
-			font-size: 16px;
-		}
-	}
-	&__item--checked{
-		text-decoration: line-through;
-		color:#fff;
+@import "../../scss/color";
+@import "../../scss/share";
+
+.todo__list {
+	label {
+		cursor: pointer;
+		@include triange(7px, 0, 0, $WHITE);
+		transform: rotate(0deg);
+		transition: 0.5s;
 	}
 
-	input[type=checkbox]:checked + .todo__list__contnet {
-		height : 200px;
+	&__contnet {
+		height: 0px;
+		overflow: hidden;
+		transition: 0.5s;
+		margin-bottom: 30px;
 	}
+
+	&__item--checked {
+		text-decoration: line-through;
+		color: $WHITE;
+	}
+
+	input[type=checkbox]:checked+.title-bar label {
+		transform: rotate(90deg);
+	}
+
+	input[type=checkbox]:checked~.todo__list__contnet {
+		height: 200px;
+	}
+
 	input[type=checkbox] {
-		display : none;
+		display: none;
 	}
-	&__pomodoro__group{
+
+	&__pomodoro__group {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	&__pomodoro{
-		width: 12px;
-		height: 12px;
-		background-color: #fff;
-		border-radius: 50%;
+
+	&__pomodoro {
+		@include circle(12px, $WHITE, transparent, 0px);
 		margin-left: 8px;
 	}
 }

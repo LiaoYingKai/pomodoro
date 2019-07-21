@@ -1,0 +1,43 @@
+@import "../../scss/color";
+.todo__item {
+    padding: 10px 0px;
+    border-bottom: 1px solid $LIGHT_BLUE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        width: 100%;
+        padding-left: 4px;
+        color: $WHITE;
+        font-size: 16px;
+    }
+}
+.todo__item.todo__item__white{
+    border-bottom: 1px solid $LIGHT_BLUE;
+
+    .button__icon{
+        border-color: $WHITE;
+        &--play{
+            border-color: transparent transparent transparent $WHITE;
+        }
+    }
+
+    p{
+        color: $WHITE;
+    }
+}
+.todo__item.todo__item__deep__blue{
+    border-bottom: 1px solid $DEEP_BLUE;
+
+    .button__icon{
+        border-color: $DEEP_BLUE;
+        &--play{
+            border-color: transparent transparent transparent $DEEP_BLUE;
+        }
+    }
+
+    p{
+        color: $DEEP_BLUE;
+    }
+}

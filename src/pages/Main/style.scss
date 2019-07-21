@@ -78,31 +78,7 @@
 				height: 140px;
 			}
 
-			&__todo {
-				display: flex;
-				align-items: center;
-				color: #003164;
-				font-size: 16px;
-				padding-bottom: 8px;
-				padding-top: 12px;
-				border-bottom: 1px solid #003164;
-				box-sizing: border-box;
-
-				&__content {
-					width: 100%;
-				}
-
-				.button__icon {
-					background-color: transparent;
-					border: 2px solid #003164;
-
-					div {
-						border-color: transparent transparent transparent #003164;
-					}
-				}
-			}
-
-			p {
+			&__more {
 				color: #FF4384;
 				font-size: 16px;
 				text-align: right;
