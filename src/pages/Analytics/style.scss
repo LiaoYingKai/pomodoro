@@ -1,3 +1,4 @@
+@import "../../scss/color";
 .analytics {
 	&__focus {
 		margin: 16px 0 60px;
@@ -6,16 +7,16 @@
 		align-items: center;
 		&__title {
 			font-size: 16px;
-			color: #fff;
+			color: $WHITE;
 		}
 
 		&__content {
 			font-size: 60px;
-			color: #FF4384;
+			color: $DEEP_PINK;
 
 			span {
 				font-size: 16px;
-				color: #335a83;
+				color: $LIGHT_BLUE;
 			}
 		}
 	}

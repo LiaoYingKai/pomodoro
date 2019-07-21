@@ -1,9 +1,10 @@
+@import "../../scss/color";
 .title-bar{
 	width:100%;
 	padding: 8px 16px;
-	background-color: #335a83;
+	background-color: $LIGHT_BLUE;
 	font-size: 24px;
-	color:#fff;
+	color:$WHITE;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

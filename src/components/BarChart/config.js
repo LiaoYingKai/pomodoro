@@ -6,6 +6,11 @@ module.exports = {
       type : 'line'        // 默认为直线，可选为：'line' | 'shadow'
     }
   },
+  grid: {
+    top: 30,
+    bottom: 30,
+    right: 0,
+  },
   xAxis : [
     {
       type : 'category',
@@ -55,7 +60,12 @@ module.exports = {
       name:'直接访问',
       type:'bar',
       barWidth: '60%',
-      data:[16, 12, 16, 8, 12, 4, {value:25,itemStyle:{color:'#FF4384'}}]
+      data:[16, 12, 16, 8, 12, 4, {value:24,itemStyle:{color:'#FF4384'}}],
+      itemStyle: {
+        normal:{
+          color: '#fff',
+        }
+      }
     }
   ],
   textStyle:[
