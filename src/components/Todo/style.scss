@@ -1,7 +1,6 @@
 @import "../../scss/color";
 .todo__item {
     padding: 10px 0px;
-    border-bottom: 1px solid $LIGHT_BLUE;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +8,6 @@
     p {
         width: 100%;
         padding-left: 4px;
-        color: $WHITE;
         font-size: 16px;
     }
 }

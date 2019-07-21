@@ -16,31 +16,15 @@
 		margin-bottom: 30px;
 	}
 
-	&__item--checked {
-		text-decoration: line-through;
-		color: $WHITE;
-	}
-
-	input[type=checkbox]:checked+.title-bar label {
-		transform: rotate(90deg);
-	}
-
-	input[type=checkbox]:checked~.todo__list__contnet {
-		height: 200px;
-	}
-
 	input[type=checkbox] {
 		display: none;
-	}
 
-	&__pomodoro__group {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+		&:checked+.title-bar label {
+			transform: rotate(90deg);
+		}
 
-	&__pomodoro {
-		@include circle(12px, $WHITE, transparent, 0px);
-		margin-left: 8px;
+		&:checked~.todo__list__contnet {
+			height: 200px;
+		}
 	}
 }

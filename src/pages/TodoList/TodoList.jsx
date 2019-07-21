@@ -4,6 +4,8 @@ import Title from '../../components/Title'
 import InputTodo from '../../components/InputTodo'
 import ButtonIcon from '../../components/ButtonIcon'
 import Todo from '../../components/Todo'
+import Done from '../../components/Done'
+
 
 class Main extends Component {
   render() {
@@ -25,16 +27,9 @@ class Main extends Component {
             <Title title='DONE'>
               <label htmlFor="tab2"></label>
             </Title>
-            <ul className="todo__list__contnet">
-              <li className="todo__list__item todo__list__item--checked">
-                <ButtonIcon type={ButtonIcon.ButtonIconEnums.CHECKED}/>
-                <p>The first thing to do today</p>
-                <div className="todo__list__pomodoro__group">
-                  <div className="todo__list__pomodoro"></div>
-                  <div className="todo__list__pomodoro"></div>
-                </div>
-              </li>
-            </ul>
+            <div className="todo__list__contnet">
+              <Done done="The first thing to do today" pomodoroNumber={5}/>
+            </div>
           </section>
         </div>
       </div>
