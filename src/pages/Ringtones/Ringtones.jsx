@@ -17,8 +17,8 @@ class Ringtones extends Component {
   }
   _handleChangeMusic(type,index){
     type === 'workMusic'?
-      this.setState({workMusic:music[index]}) :
-      this.setState({breakMusic:music[index]})
+      this.setState({ workMusic: music[index] }) :
+      this.setState({ breakMusic: music[index] })
   }
 
   _renderList(type,chooseItem){
