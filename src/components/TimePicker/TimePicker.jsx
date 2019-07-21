@@ -3,36 +3,29 @@ import PropTypes from 'prop-types'
 
 const TypeEnums = {
   START: 'start',
-  STOP: 'stop',
-}
-
-const SizeEnums = {
-  LARGE: 'large',
-  SMALL: 'small',
+  RUNNING: 'running',
 }
 
 const ColorEnums = {
-  PINK: 'pink',
-  BLUE: 'blue',
+  DEEP_PINK: 'deep__pink',
+  DEEP_AQUA_BLUE: 'deep__aqua__blue',
 }
 
 const propTypes = {
   type: PropTypes.oneOf(Object.values(TypeEnums).concat('')),
-  size: PropTypes.oneOf(Object.values(SizeEnums).concat('')),
   color: PropTypes.oneOf(Object.values(ColorEnums).concat('')),
 
 }
 
 const defaultProps = {
   type: TypeEnums.START,
-  size: SizeEnums.SMALL,
-  color: ColorEnums.PINK,
+  color: ColorEnums.DEEP_PINK,
 }
 
-const TimePicker = ({ size, type, color}) =>(
-  <div className={`time__picker time__picker__${size} time__picker__${color}`}>
-    <div className={`time__picker__inline__circle__${size} time__picker__inline__circle__${color}`}>
-      <div className={`time__picker__button__${type}__${size} time__picker__button__${color}`}>
+const TimePicker = ({ type, color}) =>(
+  <div className={`time__picker time__picker__outline__${color}`}>
+    <div className={`time__picker__inline__${type} time__picker__inline__${type}__${color}`}>
+      <div className={`time__picker__button__${type}__${color}`}>
       </div>
     </div>
   </div>
@@ -41,7 +34,6 @@ const TimePicker = ({ size, type, color}) =>(
 TimePicker.propTypes = propTypes
 TimePicker.defaultProps = defaultProps
 TimePicker.TypeEnums = TypeEnums
-TimePicker.SizeEnums = SizeEnums
 TimePicker.ColorEnums = ColorEnums
 
 

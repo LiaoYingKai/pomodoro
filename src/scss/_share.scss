@@ -19,3 +19,28 @@
 	top: $top;
 	left: $left;
 }
+
+@mixin running($color) {
+
+	&::after,
+	&::before {
+		display: inline-block;
+		content: '';
+		width: 10px;
+		height: 50px;
+		background-color: $color;
+		position: absolute;
+		left: 30%;
+		top: 18px;
+	}
+
+	&::after {
+		left: 60%;
+	}
+}
+
+@mixin flex--center() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

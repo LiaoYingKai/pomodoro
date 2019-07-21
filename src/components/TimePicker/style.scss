@@ -1,129 +1,81 @@
+@import "../../scss/color";
+@import "../../scss/share";
+
 .time__picker {
-	background-color: transparent;
-	border-radius: 50%;
-	box-sizing: border-box;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+	@include circle(540px, transparent, $DEEP_PINK, 5px);
+	@include flex--center();
 
-	&__pink {
-		border-color: #FF4384;
+	&__outline__deep__pink {
+		border-color: $DEEP_PINK;
 	}
 
-	&__blue {
-		border-color: #00A7FF;
+	&__outline__deep__aqua__blue {
+		border-color: $DEEP_AQUA_BLUE;
 	}
 
-	&__small {
-		width: 102px;
-		height: 102px;
-		border-width: 2px;
-		border-style: solid;
-	}
+	&__inline {
+		&__start {
+			@include circle(500px, $DEEP_PINK, transparent, 0px);
+			@include flex--center();
 
-	&__large {
-		width: 540px;
-		height: 540px;
-		border-width: 5px;
-		border-style: solid;
-	}
+			&__deep__pink {
+				background-color: $DEEP_PINK;
+			}
 
-	&__inline__circle {
-		&__small {
-			width: 90px;
-			height: 90px;
-			border-radius: 50%;
-			background-color: #FF4384;
+			&__deep__aqua__blue {
+				background-color: $DEEP_AQUA_BLUE;
+			}
+		}
+
+		&__running {
+			@include circle(500px, $WHITE, $DEEP_PINK, 5px);
+			@include flex--center();
+
+			&__deep__pink {
+				border-color: $DEEP_PINK;
+			}
+
+			&__deep__aqua__blue {
+				border-color: $DEEP_AQUA_BLUE;
+			}
 		}
 	}
 
-	&__inline__circle {
-		&__large {
-			width: 500px;
-			height: 500px;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+	&__button__start {
+		&__deep__pink {
+			@include circle(90px, $WHITE, transparent, 0px);
+			position: relative;
+			cursor: pointer;
+
+			&::before {
+				@include triange(25px, 18px, 36%, $DEEP_PINK);
+			}
 		}
 
-		&__pink {
-			background-color: #FF4384;
-		}
+		&__deep__aqua__blue {
+			@include circle(90px, $WHITE, transparent, 0px);
+			position: relative;
+			cursor: pointer;
 
-		&__blue {
-			background-color: #00A7FF;
-		}
-	}
-
-	&__button__start__small {
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 18px 0 18px 31.2px;
-		border-color: transparent transparent transparent #fff;
-		position: relative;
-		top: 25px;
-		left: 36px;
-		cursor: pointer;
-	}
-
-	&__button__start__large {
-		width: 90px;
-		height: 90px;
-		border-radius: 50%;
-		background-color: #fff;
-		position: relative;
-		cursor: pointer;
-
-		&::before {
-			display: block;
-			content: '';
-			border-width: 25px 0 25px 43.3px;
-			border-style: solid;
-			border-color: transparent transparent transparent #FF4384;
-			position: absolute;
-			left: 36%;
-			top: 18px;
-		}
-
-	}
-
-
-	&__button__stop__large {
-		width: 90px;
-		height: 90px;
-		border-radius: 50%;
-		background-color: #fff;
-		position: relative;
-		cursor: pointer;
-
-		&::after,
-		&::before {
-			display: inline-block;
-			content: '';
-			width: 10px;
-			height: 50px;
-			background-color: #FF4384;
-			position: absolute;
-			left: 30%;
-			top: 18px;
-		}
-
-		&::after {
-			left: 60%;
+			&::before {
+				@include triange(25px, 18px, 36%, $DEEP_AQUA_BLUE);
+			}
 		}
 	}
-	&__button__pink{
-		background-color: #fff;
-		&::before{
-			border-color: transparent transparent transparent #FF4384;
+
+	&__button__running {
+		&__deep__pink {
+			@include circle(90px, $DEEP_PINK, transparent, 0px);
+			position: relative;
+			cursor: pointer;
+			@include running($WHITE);
 		}
-	}
-	&__button__blue{
-		background-color: #fff;
-		&::before{
-			border-color: transparent transparent transparent #00A7FF;
+
+		&__deep__aqua__blue {
+			@include circle(90px, $DEEP_AQUA_BLUE, transparent, 0px);
+			position: relative;
+			cursor: pointer;
+			@include running($WHITE);
 		}
 	}
 }
