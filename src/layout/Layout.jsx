@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Link, Route, Switch, NavLink, isActive } from 'react-router-dom'
+import { Link, Route, Switch, NavLink, isActive, HashRouter as Router, withRouter, BrowserRouter } from 'react-router-dom'
 import loadComponent from './loadComponent.js'
 import TodoIcon from '../components/Icon/TodoIcon.js'
 import AnalyticsIcon from '../components/Icon/AnalyticsIcon.js'
@@ -21,8 +21,12 @@ class Layout extends Component{
 		}
 	}
 	componentDidMount(){
-		const path = this.props.location.pathname
-		if(path !== "/"){
+		const { hash } = this.props.location
+		if(hash.match(/\#\/$/g)){
+			this.setState({
+				isOpen: false
+			})
+		}else{
 			this.setState({
 				isOpen: true
 			})
@@ -38,7 +42,7 @@ class Layout extends Component{
 		const { _handleToggleSwitch } = this
 		const { isOpen } = this.state
 		return(
-			<React.Fragment>
+			<Router>
 			<Main isOpen={isOpen}></Main>
 			<div className="content">
 				<nav className="menu">
@@ -89,7 +93,7 @@ class Layout extends Component{
 					<p>pomodoro</p>
 				</div>
 			</div>
-			</React.Fragment>
+			</Router>
 		)
 	}
 }
