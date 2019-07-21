@@ -4,7 +4,7 @@
 .home__page {
 	position: absolute;
 	min-height: 800px;
-	background-color: #FFEDF7;
+	background-color: $LIGHT_PINK;
 	display: flex;
 	justify-content: space-between;
 	font-family: sans-serif;
@@ -16,111 +16,76 @@
 	&__content {
 		width: 830px;
 		box-sizing: border-box;
-		padding: 48px 0 0 85px;
+		padding: 48px 300px 0 85px;
 		position: relative;
 
-		&__container {
-			width: 445px;
+		.input__todo {
+			margin-bottom: 145px;
 		}
 
-		&__todo {
-			width: 100%;
-			margin-top: 145px;
-			margin-bottom: 110px;
+	}
 
-			&__title {
+	&__doing {
+		margin-bottom: 110px;
+
+		&__bar {
+			display: flex;
+		}
+
+		&__icon {
+			@include circle(48px, transparent, 2px, $DEEP_BLUE);
+			margin-right: 16px;
+		}
+
+		&__title {
+			font-size: 24px;
+			color: $DEEP_BLUE;
+			line-height: 28px;
+		}
+
+		&__amount {
+
+			&--done {
+				@include circle(12px, $DEEP_BLUE, transparent, 0px);
+				margin-right: 8px;
+			}
+
+			&--next {
+				@include circle(12px, transparent, $DEEP_PINK, 1px);
+				margin-right: 8px;
+			}
+
+			&--now {}
+
+			&__group {
 				display: flex;
-
-				&__icon {
-					@include circle(48px,transparent,2px, $DEEP_BLUE);
-					margin-right: 16px;
-				}
-
-				&__todo {
-					font-size: 24px;
-					color: #003164;
-					line-height: 28px;
-				}
-
-				&__count {
-					width: 12px;
-					height: 12px;
-					border-radius: 50%;
-					margin-right: 8px;
-				}
-
-				.done {
-					background-color: #003164;
-				}
-
-				.next {
-					border: 1px solid #FF4384;
-				}
-
-				.now {}
-
-				&__count_group {
-					display: flex;
-					align-items: center;
-					margin-top: 8px;
-				}
-			}
-
-			&__countdown {
-				font-size: 170px;
-				color: #FF4384;
-				width: 100%;
+				align-items: center;
+				margin-top: 8px;
 			}
 		}
 
-		&__todos {
-			&__container {
-				height: 140px;
-			}
-
-			&__more {
-				color: #FF4384;
-				font-size: 16px;
-				text-align: right;
-			}
+		&__countdown {
+			font-size: 170px;
+			color: $DEEP_PINK;
+			width: 100%;
 		}
 	}
 
-	&__menu__bar {
-		width: 450px;
-		background-color: #003164;
-		display: flex;
-		justify-content: space-between;
-		flex-direction: column;
-		box-sizing: border-box;
-		padding: 48px 85px 48px 0;
-		align-items: flex-end;
-		color: #fff;
-
-		a {
-			fill: #fff;
-			display: inline-block;
-			cursor: pointer;
-			margin-bottom: 48px;
+	&__todo__list {
+		&__container {
+			height: 140px;
 		}
 
-		&--position {
-			display: flex;
-			flex-direction: column;
-		}
-
-		&--logo {
-			text-transform: uppercase;
-			color: #ffffff;
-			font-size: 24px;
-			writing-mode: vertical-rl;
-			line-height: 32px;
+		&__more {
+			color: $DEEP_PINK;
+			font-size: 16px;
+			text-align: right;
 		}
 	}
 
 	&__time__clock {
 		top: calc(50% - 270px);
-		right: 180px;
+		right: -270px;
 		position: absolute;
 		width: 540px;
 		height: 540px;

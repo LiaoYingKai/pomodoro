@@ -14,37 +14,35 @@ class Main extends Component {
       <React.Fragment>
         <div className={`home__page ${isOpen?'home__page-open': ''}`}>
           <div className={`home__page__content ${isOpen?'home__page-open': ''}`}>
-            <div className="home__page__content__container">
-              <InputTodo color={InputTodo.ColorEnums.PINK}/>
-              <div className="home__page__content__todo">
-                <div className="home__page__content__todo__title">
-                  <div className="home__page__content__todo__title__icon"></div>
-                  <div>
-                    <div className="home__page__content__todo__title__todo">
+            <InputTodo color={InputTodo.ColorEnums.PINK}/>
+            <div className="home__page__doing">
+              <div className="home__page__doing__bar">
+                <div className="home__page__doing__icon"></div>
+                <div>
+                  <div className="home__page__doing__title">
 												the First thing to do today
-                    </div>
-                    <div className="home__page__content__todo__title__count_group">
-                      <div className="home__page__content__todo__title__count done"></div>
-                      <div className="home__page__content__todo__title__count next"></div>
-                      <div className="home__page__content__todo__title__count now"></div>
-                    </div>
+                  </div>
+                  <div className="home__page__doing__amount__group">
+                    <div className="home__page__doing__amount--done"></div>
+                    <div className="home__page__doing__amount--next"></div>
+                    <div className="home__page__doing__amount--now"></div>
                   </div>
                 </div>
-                <div className="home__page__content__todo__countdown"> 25:00 </div>
               </div>
-              <div className="home__page__content__todos">
-                <div className="home__page__content__todos__container">
-                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-                  <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-                </div>
-                <div className="home__page__content__todos__more"> more </div>
+              <div className="home__page__doing__countdown"> 25:00 </div>
+            </div>
+            <div className="home__page__todo__list">
+              <div className="home__page__todo__list__container">
+                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
+                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
+                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
               </div>
+              <div className="home__page__todo__list__more"> more </div>
             </div>
           </div>
-        </div>
-        <div className={`home__page__time__clock ${isOpen?'home__page-open': ''}`}>
-          <TimePicker size={TimePicker.SizeEnums.LARGE} type={TimePicker.TypeEnums.STOP} color={TimePicker.ColorEnums.PINK}/>
+          <div className={`home__page__time__clock ${isOpen?'home__page-open': ''}`}>
+            <TimePicker type={TimePicker.TypeEnums.START} color={TimePicker.ColorEnums.DEEP_PINK}/>
+          </div>
         </div>
       </React.Fragment>
     )
