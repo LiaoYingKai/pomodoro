@@ -1,20 +1,23 @@
 import {
   ADD_TODO,
-  CHANFE_TODO_STATE,
+  CHANGE_TODO_STATE,
   DELETE_TODO,
   SET_DOING,
   GET_DOING,
 } from './actionsTypes'
 
+let todoId = 0
+
 export function addTodo(todo){
   return {
     type: ADD_TODO,
+    id: todoId++,
     todo
   }
 }
 export function changeTodoState(index){
   return {
-    type: CHANFE_TODO_STATE,
+    type: CHANGE_TODO_STATE,
     index
   }
 }

@@ -21,21 +21,12 @@ class InputTodo extends Component{
     this._handleChangeValue = this._handleChangeValue.bind(this)
     this._handleAddTodo = this._handleAddTodo.bind(this)
     this.state ={
-      todo:{
-        text:'',
-        isDone: false,
-        pomodoroNumber: 0,
-      }
+      todo: ''
     }
   }
   _handleChangeValue(event){
-    console.log(event.target.value)
     this.setState({
-      todo:{
-        text: event.target.value,
-        isDone: false,
-        pomodoroNumber: 0,
-      }
+      todo: event.target.value
     })
   }
   _handleAddTodo(){
@@ -44,22 +35,17 @@ class InputTodo extends Component{
 
     addTodo(todo)
     this.setState({
-      todo:{
-        text: '',
-        isDone: false,
-        pomodoroNumber: 0,
-      }
+      todo: ''
     })
   }
   render(){
     const { _handleChangeValue,_handleAddTodo } = this
     const { color } = this.props
     const { todo } = this.state
-    const { text } = todo
     
     return (
       <div className={`input__todo input__todo__${color}`}>
-        <input type='text' placeholder='ADD A NEW MISSINO...' onChange={_handleChangeValue} value={text}/>
+        <input type='text' placeholder='ADD A NEW MISSINO...' onChange={_handleChangeValue} value={todo}/>
         <button onClick={_handleAddTodo}> + </button>
       </div>
     )
@@ -70,11 +56,6 @@ InputTodo.propTypes = propTypes
 InputTodo.defaultProps = defaultProps
 InputTodo.ColorEnums = ColorEnums
 
-
-function mapStateToProps(state) {
-
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     addTodo: (todo) =>{
@@ -83,4 +64,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(InputTodo)
+export default connect(undefined,mapDispatchToProps)(InputTodo)

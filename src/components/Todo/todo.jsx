@@ -10,15 +10,17 @@ const ColorEnums = {
 const propTypes = {
   todo: PropTypes.string,
   color: PropTypes.oneOf(Object.values(ColorEnums).concat('')),
+  onClick: PropTypes.func,
 }
 const defaultProps = {
   todo: '',
   color: ColorEnums.WHITE,
+  onClick: () => {}
 }
 
-function Todo({ todo, color }){
+function Todo({ todo, color, onClick }){
   return(
-    <div className={`todo__item todo__item__${color}`}>
+    <div className={`todo__item todo__item__${color}`} onClick={onClick}>
       <ButtonIcon type={ButtonIcon.ButtonIconEnums.DEFAULT}/>
       <p>{todo}</p>
       <ButtonIcon type={ButtonIcon.ButtonIconEnums.START}/>

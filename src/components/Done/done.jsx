@@ -4,11 +4,13 @@ import ButtonIcon from '../ButtonIcon'
 
 const propTypes = {
   done: PropTypes.string,
-  pomodoroNumber: PropTypes.number
+  pomodoroNumber: PropTypes.number,
+  onClick: PropTypes.func,
 }
 const defaultProps = {
   done: '',
-  pomodoroNumber: 0
+  pomodoroNumber: 0,
+  onClick: () => {},
 }
 
 class Done extends React.Component{
@@ -34,16 +36,16 @@ class Done extends React.Component{
   }
 
   render(){
-    const { done } = this.props
+    const { done, onClick } = this.props
     const { _renderPomodoroGroup } = this
     return(
-      <li className="done__item">
+      <div className="done__item" onClick={onClick}>
         <ButtonIcon type={ButtonIcon.ButtonIconEnums.CHECKED}/>
         <p>{done}</p>
         <div className="done__item__pomodoro__group">
           {_renderPomodoroGroup()}
         </div>
-      </li>
+      </div>
     )
   }
 }
