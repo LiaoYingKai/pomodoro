@@ -6,7 +6,8 @@ import ButtonIcon from '../../components/ButtonIcon'
 import Todo from '../../components/Todo'
 import Done from '../../components/Done'
 import { connect } from 'react-redux'
-import { changeTodoState, deleteTodo, } from '../../actions/todoActions'
+import { changeTodoState, deleteTodo,  } from '../../actions/todoActions'
+import { setDoing } from '../../actions/doingActions'
 
 class TodoList extends Component {
   constructor(){
@@ -15,19 +16,20 @@ class TodoList extends Component {
     this._renderDoneTodo = this._renderDoneTodo.bind(this)
   }
   _renderTodo(){
-    const { todos } = this.props
+    const { todos, changeTodoState, setDoing } = this.props
     return todos
       .filter(item=> !item.isDone)
       .map(item => (
         <Todo 
           key={`done__todo__${item.id}`} 
           todo={item.text}
-          onClick={()=>{this.props.changeTodoState(item.id)} }
+          onCheckTodo={()=>{changeTodoState(item.id)} }
+          onChangeTodo={()=>{setDoing(item.id)}}
         />
       ))
   }
   _renderDoneTodo(){
-    const { todos } = this.props
+    const { todos, deleteTodo, changeTodoState } = this.props
     return todos
       .filter(item=> item.isDone)
       .map(item => (
@@ -35,8 +37,8 @@ class TodoList extends Component {
           key={`done__todo__${item.id}`} 
           done={item.text} 
           pomodoroNumber={item.pomodoroNumber}
-          onDeleteTodo={()=>{this.props.deleteTodo(item.id)}}
-          onCheckTodo={()=>{this.props.changeTodoState(item.id)}}
+          onDeleteTodo={()=>{deleteTodo(item.id)}}
+          onCheckTodo={()=>{changeTodoState(item.id)}}
         />
       ))
   }
@@ -80,11 +82,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    deleteTodo: (index) =>{
-      dispatch(deleteTodo(index))
+    deleteTodo: (id) =>{
+      dispatch(deleteTodo(id))
     },
-    changeTodoState: (index) => {
-      dispatch(changeTodoState(index))
+    changeTodoState: (id) => {
+      dispatch(changeTodoState(id))
+    },
+    setDoing: (id) => {
+      dispatch(setDoing(id))
     }
   }
 }
