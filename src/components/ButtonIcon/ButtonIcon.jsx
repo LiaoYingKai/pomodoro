@@ -9,39 +9,41 @@ const ButtonIconEnums={
 }
 
 const propTypes = {
-  type: PropTypes.oneOf(Object.values(ButtonIconEnums).concat(''))
+  type: PropTypes.oneOf(Object.values(ButtonIconEnums).concat('')),
+  onClick: PropTypes.func,
 }
 const defaultProps = {
   type: ButtonIconEnums.DEFAULT,
+  onClick: () => {},
 }
 
 class ButtonIcon extends Component{
 
   _renderButton(){
-    const { type } = this.props
+    const { type, onClick } = this.props
 
     switch(type){
     case ButtonIconEnums.DEFAULT:
       return(
-        <div className="button__icon">
+        <div className="button__icon" onClick={onClick}>
           <div></div>
         </div>
       )
     case ButtonIconEnums.START:
       return(
-        <div className="button__icon">
+        <div className="button__icon" onClick={onClick}>
           <div className="button__icon--play"></div>
         </div>
       )
     case ButtonIconEnums.CHOOSED:
       return(
-        <div className="button__icon button__icon--pink">
+        <div className="button__icon button__icon--pink" onClick={onClick}>
           <div className="button__icon--choosed"></div>
         </div>
       )
     case ButtonIconEnums.CHECKED:
       return(
-        <div className="button__icon">
+        <div className="button__icon" onClick={onClick}>
           <div className="button__icon--checked"></div>
         </div>
       )

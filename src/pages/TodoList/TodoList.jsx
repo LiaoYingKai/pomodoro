@@ -35,7 +35,8 @@ class TodoList extends Component {
           key={`done__todo__${item.id}`} 
           done={item.text} 
           pomodoroNumber={item.pomodoroNumber}
-          onClick={()=>{console.log(item.id)}}
+          onDeleteTodo={()=>{this.props.deleteTodo(item.id)}}
+          onCheckTodo={()=>{this.props.changeTodoState(item.id)}}
         />
       ))
   }

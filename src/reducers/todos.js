@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-case-declarations */
 import {
   ADD_TODO,
@@ -8,18 +9,22 @@ import {
 export default function todos(state=[], action){
   console.log(state)
   let todos = state
-  switch(action.type){
-  case ADD_TODO:
-    return [ ...todos, {text:action.todo,id: action.id,pomodoroNumber: 0,isCheck: false} ]
-  case CHANGE_TODO_STATE:
-    todos = state
-    todos[action.index].isDone = !todos[action.index].isDone
-    return [...todos]
-  case DELETE_TODO:
-    todos = state
-    todos.splice(action.index,0)
-    return [...todos]
-  default:
-    return todos
+  switch(action.type) {
+    case ADD_TODO:{
+      return [ ...todos, {text:action.todo,id: action.id,pomodoroNumber: 0,isDone: false} ]
+    }
+    case CHANGE_TODO_STATE: {
+      const index = todos.findIndex(item => item.id === action.id)
+      todos[index].isDone = !todos[index].isDone
+      return [...todos]
+    }
+    case DELETE_TODO:{
+      const index = todos.findIndex(item => item.id === action.id)
+      todos.splice(index,1)
+      return [...todos]
+    }
+    default: {
+      return todos
+    }
   }
 }

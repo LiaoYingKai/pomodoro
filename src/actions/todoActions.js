@@ -15,22 +15,22 @@ export function addTodo(todo){
     todo
   }
 }
-export function changeTodoState(index){
+export function changeTodoState(id){
   return {
     type: CHANGE_TODO_STATE,
-    index
+    id
   }
 }
-export function deleteTodo(index){
+export function deleteTodo(id){
   return {
     type: DELETE_TODO,
-    index
+    id
   }
 }
-export function setDoing(index){
+export function setDoing(id){
   return {
     type: SET_DOING,
-    index
+    id
   }
 }
 export function getDoing(){
