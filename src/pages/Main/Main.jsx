@@ -11,6 +11,7 @@ import Todo from '../../components/Todo'
 import { connect } from 'react-redux'
 import { changeTodoState, deleteTodo,  } from '../../actions/todoActions'
 import { setDoing } from '../../actions/doingActions'
+import { setTime, changeTimeState } from '../../actions/timeActions'
 
 const TypeEnums = {
   WORK_START: 'work_start',
@@ -33,14 +34,19 @@ class Main extends Component {
   constructor(){
     super()
     this._renderTimePicker = this._renderTimePicker.bind(this)
+		this._handleTimeFormat = this._handleTimeFormat.bind(this)
 		this.state = {
 			color: 'blue',
 		}
   }
+	_handleTimeFormat(){
+		const { time } = this.props
+		const HH = Math.floor(time/60) > 10 ? Math.floor(time/60) : `0${Math.floor(time/60)}`
+		const MM = time%60 > 10 ? time%60 : `0${time%60}`
+		return `${HH}:${MM}`
+	}
   _renderTimePicker(){
     const { type } = this.props
-		console.log(this.props)
-    console.log(type)
     switch(type){
       case TypeEnums.WORK_START: {
         return <TimePicker type={TimePicker.TypeEnums.START} color={TimePicker.ColorEnums.DEEP_PINK}/>
@@ -57,8 +63,8 @@ class Main extends Component {
     }
   }
   render() {
-    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color } = this.props
-    const { _renderTimePicker } = this
+    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color} = this.props
+    const { _renderTimePicker, _handleTimeFormat } = this
 
     return (
       <React.Fragment>
@@ -82,7 +88,9 @@ class Main extends Component {
                   </div>
                 </div>
               </div>
-              <div className={`home__page__doing__countdown home__page__doing__countdown__color__${color}`}> 25:00 </div>
+              <div className={`home__page__doing__countdown home__page__doing__countdown__color__${color}`}>
+								{_handleTimeFormat()}
+							</div>
             </div>
             <div className="home__page__todo__list">
               <div className="home__page__todo__list__container">
@@ -108,7 +116,8 @@ Main.TypeEnums = TypeEnums
 function mapStateToProps(state){
   return {
     todos: state.todos,
-    nowDoing: state.todos[state.doing]
+    nowDoing: state.todos[state.doing],
+		time: state.time.time
   }
 }
 
@@ -122,7 +131,13 @@ function mapDispatchToProps(dispatch) {
     },
     setDoing: (id) => {
       dispatch(setDoing(id))
-    }
+    },
+		setTime:() => {
+			dispatch(setTime)
+		},
+		changeTimeState:(state) => {
+			dispatch(changeTimeState(state))
+		}
   }
 }
 

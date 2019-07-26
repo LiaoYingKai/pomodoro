@@ -60,7 +60,6 @@ class Layout extends Component{
 				type: Main.TypeEnums.BREAK_RUNNING,
 			}]
 		index = index >= 3 ? 0 : index + 1
-		console.log(index)
 		this.setState(Object.assign({},mainPageState[index],{index: index}))
 	}
 	render(){

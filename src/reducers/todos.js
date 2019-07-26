@@ -7,7 +7,6 @@ import {
 } from '../actions/actionsTypes'
 
 export default function todos(state=[], action){
-  console.log(state)
   let todos = state
   switch(action.type) {
     case ADD_TODO:{

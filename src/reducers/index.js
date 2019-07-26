@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux'
 import todos from './todos.js'
 import doing from './doing.js'
-// import visibilityFilter from './visibilityFilter'
+import time from './time.js'
 
 const pomodoro = combineReducers({
   todos,
-  doing
+  doing,
+  time
 })
 
 export default pomodoro
