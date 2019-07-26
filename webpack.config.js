@@ -31,10 +31,10 @@ module.exports = {
     }]
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'build'), 'node_modules']
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true
   },
   plugins: [new HtmlWebpackPlugin({
