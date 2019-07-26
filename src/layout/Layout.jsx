@@ -4,6 +4,7 @@ import loadComponent from './loadComponent.js'
 import TodoIcon from '../components/Icon/TodoIcon.js'
 import AnalyticsIcon from '../components/Icon/AnalyticsIcon.js'
 import RingtonesIcon from '../components/Icon/RingtonesIcon.js'
+import NextStepIcon from '../components/Icon/NextStepIcon.js'
 import CloseIcon from '../components/Icon/CloseIcon.js'
 import Main from '../pages/Main'
 import Logo from '../components/Logo'
@@ -16,6 +17,7 @@ class Layout extends Component{
 	constructor(){
 		super();
 		this._handleToggleSwitch = this._handleToggleSwitch.bind(this);
+		this._handleSkipPage = this._handleSkipPage.bind(this);
 		this.state = {
 			isOpen: false,
 		}
@@ -38,8 +40,11 @@ class Layout extends Component{
 			isOpen: !isOpen
 		})
 	}
+	_handleSkipPage(){
+		console.log("test")
+	}
 	render(){
-		const { _handleToggleSwitch } = this
+		const { _handleToggleSwitch, _handleSkipPage } = this
 		const { isOpen } = this.state
 		return(
 			<Router>
@@ -89,6 +94,9 @@ class Layout extends Component{
 						<Link to="ringtones" onClick={_handleToggleSwitch}>
 							<RingtonesIcon/>
 						</Link>
+						<a onClick={_handleSkipPage} style={{ cursor: "pointer" }}>
+							<NextStepIcon/>
+						</a>
 					</div>
 					<p>pomodoro</p>
 				</div>
