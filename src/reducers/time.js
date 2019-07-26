@@ -6,7 +6,7 @@ import {
 } from '../actions/actionsTypes'
 
 const initState = {
-	time: 333,
+	time: 1500,
 	state: 'STOP',
 	timeId: 0
 }

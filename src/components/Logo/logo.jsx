@@ -1,9 +1,11 @@
 import React, {Component, } from 'react'
 import { connect } from 'react-redux'
+import todo from '../Todo';
 class Logo extends Component{
   constructor(){
     super()
     this._handleTimeFormat = this._handleTimeFormat.bind(this)
+    this._rednerNowDoing = this._rednerNowDoing.bind(this)
   }
   _handleTimeFormat(){
     const { time } = this.props
@@ -11,9 +13,19 @@ class Logo extends Component{
     const MM = time%60 > 10 ? time%60 : `0${time%60}`
     return `${HH}:${MM}`
   }
+  _rednerNowDoing(){
+    const { nowDoing,todos, doingId } = this.props
+    if(todos.length != 0){
+      if(!todos[doingId].isDone) {
+        return <React.Fragment> {nowDoing.text} </React.Fragment>
+      }
+    }
+    return (
+      <React.Fragment>  </React.Fragment>
+    )
+  }
   render(){
-    const { nowDoing } = this.props
-    const { _handleTimeFormat } = this
+    const { _handleTimeFormat,_rednerNowDoing } = this
     return(
       <div className="logo">
         <div className="logo__position">
@@ -26,7 +38,9 @@ class Logo extends Component{
           <div className="logo__time">
             {_handleTimeFormat()}
           </div>
-          <div className="logo__todo">{nowDoing ? nowDoing.text : ''}</div>
+          <div className="logo__todo">
+            {_rednerNowDoing()}
+          </div>
         </div>
       </div>
     )
@@ -36,7 +50,9 @@ class Logo extends Component{
 function mapStateToProps(state){
   return {
     nowDoing: state.todos[state.doing],
-    time: state.time.time
+    time: state.time.time,
+    doingId: state.doing,
+    todos: state.todos
   }
 }
 export default connect(mapStateToProps,{})(Logo)

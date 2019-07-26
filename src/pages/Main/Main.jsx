@@ -37,6 +37,7 @@ class Main extends Component {
 		this._handleTimeFormat = this._handleTimeFormat.bind(this)
     this._renderTodos = this._renderTodos.bind(this)
     this._renderAmountGroup = this._renderAmountGroup.bind(this)
+    this._rednerNowDoing = this._rednerNowDoing.bind(this)
 		this.state = {
 			color: 'blue',
 		}
@@ -85,19 +86,31 @@ class Main extends Component {
   }
   _renderAmountGroup(){
     const { todos,doingId } = this.props
+    console.log(todos,doingId)
     const number = todos[doingId] ? todos[doingId].pomodoroNumber : 0
-    const done = <div className="home__page__doing__amount--done"></div>
+    const done = 'home__page__doing__amount--done'
     const dones = []
     for( let i = 0; i < number ;i++){
       dones.push(done)
     }
     return (
-      dones.map(item=> item)
+      dones.map((item,index)=> <div key={`${item}__${index}`} className={item}></div>)
+    )
+  }
+  _rednerNowDoing(){
+    const { nowDoing,todos, doingId } = this.props
+    if(todos.length != 0){
+      if(!todos[doingId].isDone) {
+        return <React.Fragment> {nowDoing.text} </React.Fragment>
+      }
+    }
+    return (
+      <React.Fragment>  </React.Fragment>
     )
   }
   render() {
-    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color, doingId} = this.props
-    const { _renderTimePicker, _handleTimeFormat, _renderTodos, _renderAmountGroup } = this
+    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color, doingId, todos} = this.props
+    const { _renderTimePicker, _handleTimeFormat, _renderTodos, _renderAmountGroup, _rednerNowDoing } = this
 
     return (
       <React.Fragment>
@@ -112,7 +125,7 @@ class Main extends Component {
                 <div className="home__page__doing__icon" onClick={()=>{changeTodoState(doingId)}} ></div>
                 <div>
                   <div className="home__page__doing__title">
-                    { nowDoing ? nowDoing.text : ''}
+                    { _rednerNowDoing()}
                   </div>
                   <div className="home__page__doing__amount__group">
                     {_renderAmountGroup()}
@@ -142,6 +155,7 @@ Main.defaultProps = defaultProps
 Main.TypeEnums = TypeEnums
 
 function mapStateToProps(state){
+  console.log(state)
   return {
     todos: state.todos,
 		doingId: state.doing,
