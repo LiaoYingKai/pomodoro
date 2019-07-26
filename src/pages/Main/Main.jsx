@@ -12,51 +12,62 @@ import { connect } from 'react-redux'
 import { changeTodoState, deleteTodo,  } from '../../actions/todoActions'
 import { setDoing } from '../../actions/doingActions'
 
-const StateEnums = {
+const TypeEnums = {
   WORK_START: 'work_start',
   WORK_RUNNING: 'work_running',
   BREAK_START: 'break_start',
   BREAK_RUNNING: 'break_running',
 }
 const propTypes={
-  state: PropTypes.oneOf(Object.values(StateEnums).concat('')),
+  type: PropTypes.oneOf(Object.values(TypeEnums).concat('')),
+	color: PropTypes.string,
+	onChangePage: PropTypes.func,
 }
 const defaultProps= {
-  state: StateEnums.WORK_START
+  type: TypeEnums.BREAK_START,
+	color: 'pink',
+	onChangePage: () => {},
 }
 
 class Main extends Component {
   constructor(){
     super()
     this._renderTimePicker = this._renderTimePicker.bind(this)
+		this.state = {
+			color: 'blue',
+		}
   }
   _renderTimePicker(){
-    const { state } = this.props
-    console.log(state)
-    switch(state){
-      case StateEnums.WORK_START: {
+    const { type } = this.props
+		console.log(this.props)
+    console.log(type)
+    switch(type){
+      case TypeEnums.WORK_START: {
         return <TimePicker type={TimePicker.TypeEnums.START} color={TimePicker.ColorEnums.DEEP_PINK}/>
       }
-      case StateEnums.WORK_RUNNING: {
+      case TypeEnums.WORK_RUNNING: {
         return <TimePicker type={TimePicker.TypeEnums.RUNNING} color={TimePicker.ColorEnums.DEEP_PINK}/>
       }
-      case StateEnums.BREAK_START: {
+      case TypeEnums.BREAK_START: {
         return <TimePicker type={TimePicker.TypeEnums.START} color={TimePicker.ColorEnums.DEEP_AQUA_BLUE}/>
       }
-      case StateEnums.BREAK_RUNNING: {
+      case TypeEnums.BREAK_RUNNING: {
         return <TimePicker type={TimePicker.TypeEnums.RUNNING} color={TimePicker.ColorEnums.DEEP_AQUA_BLUE}/>
       }
     }
   }
   render() {
-    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing } = this.props
+    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color } = this.props
     const { _renderTimePicker } = this
 
     return (
       <React.Fragment>
-        <div className={`home__page ${isOpen?'home__page-open': ''}`}>
+        <div className={`home__page ${isOpen?'home__page-open': ''} home__page__background__${color}`}>
           <div className={`home__page__content ${isOpen?'home__page-open': ''}`}>
-            <InputTodo color={InputTodo.ColorEnums.PINK}/>
+            {color === 'pink'?
+							<InputTodo color={InputTodo.ColorEnums.PINK}/> :
+							<InputTodo color={InputTodo.ColorEnums.BLUE}/>
+						}
             <div className="home__page__doing">
               <div className="home__page__doing__bar">
                 <div className="home__page__doing__icon"></div>
@@ -71,7 +82,7 @@ class Main extends Component {
                   </div>
                 </div>
               </div>
-              <div className="home__page__doing__countdown"> 25:00 </div>
+              <div className={`home__page__doing__countdown home__page__doing__countdown__color__${color}`}> 25:00 </div>
             </div>
             <div className="home__page__todo__list">
               <div className="home__page__todo__list__container">
@@ -79,7 +90,7 @@ class Main extends Component {
                 <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
                 <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
               </div>
-              <div className="home__page__todo__list__more"> more </div>
+              <div className={`home__page__todo__list__more home__page__todo__list__more__color__${color}`}> more </div>
             </div>
           </div>
           <div className={`home__page__time__clock ${isOpen?'home__page-open': ''}`}>
@@ -92,7 +103,7 @@ class Main extends Component {
 }
 Main.propTypes = propTypes
 Main.defaultProps = defaultProps
-Main.StateEnums = StateEnums
+Main.TypeEnums = TypeEnums
 
 function mapStateToProps(state){
   return {

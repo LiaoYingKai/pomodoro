@@ -4,7 +4,6 @@
 .home__page {
 	position: absolute;
 	min-height: 800px;
-	background-color: $LIGHT_PINK;
 	display: flex;
 	justify-content: space-between;
 	font-family: sans-serif;
@@ -12,6 +11,12 @@
 	left: 0;
 	transition: 0.5s;
 	opacity: 100;
+	&__background__pink{
+		background-color: $LIGHT_PINK;
+	}
+	&__background__blue{
+		background-color: $LIGHT_AQUA_BLUE;
+	}
 
 	&__content {
 		width: 830px;
@@ -43,6 +48,7 @@
 			line-height: 28px;
 		}
 
+
 		&__amount {
 
 			&--done {
@@ -68,6 +74,12 @@
 			font-size: 170px;
 			color: $DEEP_PINK;
 			width: 100%;
+			&__color__pink{
+				color: $DEEP_PINK;
+			}
+			&__color__blue{
+				color: $DEEP_AQUA_BLUE;
+			}
 		}
 	}
 
@@ -80,6 +92,12 @@
 			color: $DEEP_PINK;
 			font-size: 16px;
 			text-align: right;
+			&__color__pink{
+				color: $DEEP_PINK;
+			}
+			&__color__blue{
+				color: $DEEP_AQUA_BLUE;
+			}
 		}
 	}
 

@@ -20,6 +20,9 @@ class Layout extends Component{
 		this._handleSkipPage = this._handleSkipPage.bind(this);
 		this.state = {
 			isOpen: false,
+			color: 'pink',
+			type: Main.TypeEnums.WORK_START,
+			index: 0,
 		}
 	}
 	componentDidMount(){
@@ -41,14 +44,31 @@ class Layout extends Component{
 		})
 	}
 	_handleSkipPage(){
-		console.log("test")
+		let { index } = this.state
+		let mainPageState=[
+			{
+				color: 'pink',
+				type: Main.TypeEnums.WORK_START,
+			},{
+				color: 'pink',
+				type: Main.TypeEnums.WORK_RUNNING,
+			},{
+				color: 'blue',
+				type: Main.TypeEnums.BREAK_START,
+			},{
+				color: 'blue',
+				type: Main.TypeEnums.BREAK_RUNNING,
+			}]
+		index = index >= 3 ? 0 : index + 1
+		console.log(index)
+		this.setState(Object.assign({},mainPageState[index],{index: index}))
 	}
 	render(){
 		const { _handleToggleSwitch, _handleSkipPage } = this
-		const { isOpen } = this.state
+		const { isOpen, color, type } = this.state
 		return(
 			<Router>
-			<Main isOpen={isOpen}></Main>
+			<Main isOpen={isOpen} color={color} type={type}></Main>
 			<div className="content">
 				<nav className="menu">
 					<ul>
@@ -94,7 +114,7 @@ class Layout extends Component{
 						<Link to="ringtones" onClick={_handleToggleSwitch}>
 							<RingtonesIcon/>
 						</Link>
-						<a onClick={_handleSkipPage} style={{ cursor: "pointer" }}>
+						<a onClick={()=>{_handleSkipPage()}} style={{ cursor: "pointer" }} >
 							<NextStepIcon/>
 						</a>
 					</div>
