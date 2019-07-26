@@ -8,6 +8,8 @@ import NextStepIcon from '../components/Icon/NextStepIcon.js'
 import CloseIcon from '../components/Icon/CloseIcon.js'
 import Main from '../pages/Main'
 import Logo from '../components/Logo'
+import { connect } from 'react-redux'
+import { updatePomodoro } from '../actions/todoActions'
 
 const TodoList = loadComponent({loader:()=>import('../pages/TodoList')})
 const Analytics = loadComponent({loader:()=>import('../pages/Analytics')})
@@ -45,6 +47,7 @@ class Layout extends Component{
 	}
 	_handleSkipPage(){
 		let { index } = this.state
+		const { doingId, updatePomodoro} = this.props
 		let mainPageState=[
 			{
 				color: 'pink',
@@ -60,6 +63,9 @@ class Layout extends Component{
 				type: Main.TypeEnums.BREAK_RUNNING,
 			}]
 		index = index >= 3 ? 0 : index + 1
+		if(index == 2){
+			updatePomodoro(doingId)
+		}
 		this.setState(Object.assign({},mainPageState[index],{index: index}))
 	}
 	render(){
@@ -125,5 +131,17 @@ class Layout extends Component{
 	}
 }
 
+function mapStateToProps(state){
+	return{
+		doingId: state.doing,
+	}
+}
+function mapDispatchToProps(dispatch) {
+  return {
+		updatePomodoro: (id) => {
+			dispatch(updatePomodoro(id))
+		},
+	}
+}
 
-export default Layout
+export default connect(mapStateToProps,mapDispatchToProps)(Layout)

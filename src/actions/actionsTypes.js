@@ -1,6 +1,7 @@
 export const ADD_TODO = 'ADD_TODO'
 export const CHANGE_TODO_STATE = 'CHANGE_TODO_STATE'
 export const DELETE_TODO = 'DLELTE_TODO'
+export const UPDATE_POMODORO = 'UPDATE_POMODORO'
 export const SET_DOING = 'SET_DOING'
 export const RUN_TIME = 'SET_TIME'
 export const CLEAR_TIME_ID = 'CLEAR_TIME_ID'

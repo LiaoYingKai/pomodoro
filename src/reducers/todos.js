@@ -4,6 +4,7 @@ import {
   ADD_TODO,
   CHANGE_TODO_STATE,
   DELETE_TODO,
+	UPDATE_POMODORO,
 } from '../actions/actionsTypes'
 
 export default function todos(state=[], action){
@@ -13,15 +14,20 @@ export default function todos(state=[], action){
       return [ ...todos, {text:action.todo,id: action.id,pomodoroNumber: 0,isDone: false} ]
     }
     case CHANGE_TODO_STATE: {
-      const index = todos.findIndex(item => item.id === action.id)
+      const index = todos.findIndex(item => item.id == action.id)
       todos[index].isDone = !todos[index].isDone
       return [...todos]
     }
     case DELETE_TODO:{
-      const index = todos.findIndex(item => item.id === action.id)
+      const index = todos.findIndex(item => item.id == action.id)
       todos.splice(index,1)
       return [...todos]
     }
+		case UPDATE_POMODORO:{
+      const index = todos.findIndex(item => item.id == action.id)
+      todos[index].pomodoroNumber = todos[index].pomodoroNumber + 1
+      return [...todos]
+		}
     default: {
       return todos
     }
