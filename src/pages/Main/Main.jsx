@@ -11,7 +11,7 @@ import Todo from '../../components/Todo'
 import { connect } from 'react-redux'
 import { changeTodoState, deleteTodo,  } from '../../actions/todoActions'
 import { setDoing } from '../../actions/doingActions'
-import { setTime, changeTimeState } from '../../actions/timeActions'
+import { runTime, clearTimeId, changeTimeState  } from '../../actions/timeActions'
 
 const TypeEnums = {
   WORK_START: 'work_start',
@@ -35,6 +35,7 @@ class Main extends Component {
     super()
     this._renderTimePicker = this._renderTimePicker.bind(this)
 		this._handleTimeFormat = this._handleTimeFormat.bind(this)
+		this._renderTodos = this._renderTodos.bind(this)
 		this.state = {
 			color: 'blue',
 		}
@@ -62,9 +63,28 @@ class Main extends Component {
       }
     }
   }
+	_renderTodos(){
+		const { todos, doingIndex, changeTodoState, setDoing } = this.props
+		return(
+		<div className="home__page__todo__list__container">
+			{
+				todos
+					.filter(item => !item.isDone && item.id != doingIndex)
+					.filter((item,index) => index < 3)
+					.map(item=> <Todo
+						key={'todo__'+ item.id}
+						todo={item.text}
+						color={Todo.ColorEnums.DEEP_BLUE}
+						onCheckTodo={()=>{changeTodoState(item.id)} }
+						onChangeTodo={()=>{setDoing(item.id)}}
+					/>)
+			}
+		</div>
+		)
+	}
   render() {
-    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color} = this.props
-    const { _renderTimePicker, _handleTimeFormat } = this
+    const { isOpen, nowDoing, deleteTodo, changeTodoState, setDoing, color, doingIndex} = this.props
+    const { _renderTimePicker, _handleTimeFormat, _renderTodos } = this
 
     return (
       <React.Fragment>
@@ -76,7 +96,7 @@ class Main extends Component {
 						}
             <div className="home__page__doing">
               <div className="home__page__doing__bar">
-                <div className="home__page__doing__icon"></div>
+                <div className="home__page__doing__icon" onClick={()=>{changeTodoState(doingIndex)}} ></div>
                 <div>
                   <div className="home__page__doing__title">
                     { nowDoing ? nowDoing.text : ''}
@@ -93,11 +113,7 @@ class Main extends Component {
 							</div>
             </div>
             <div className="home__page__todo__list">
-              <div className="home__page__todo__list__container">
-                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-                <Todo todo="the second thing to do today" color={Todo.ColorEnums.DEEP_BLUE}/>
-              </div>
+							{_renderTodos()}
               <div className={`home__page__todo__list__more home__page__todo__list__more__color__${color}`}> more </div>
             </div>
           </div>
@@ -114,8 +130,10 @@ Main.defaultProps = defaultProps
 Main.TypeEnums = TypeEnums
 
 function mapStateToProps(state){
+	console.log(state)
   return {
     todos: state.todos,
+		doingIndex: state.doing,
     nowDoing: state.todos[state.doing],
 		time: state.time.time
   }
@@ -132,8 +150,11 @@ function mapDispatchToProps(dispatch) {
     setDoing: (id) => {
       dispatch(setDoing(id))
     },
-		setTime:() => {
-			dispatch(setTime)
+		runTime:() => {
+			dispatch(runTime)
+		},
+		clearTimeId:() => {
+			dispatch(clearTimeId)
 		},
 		changeTimeState:(state) => {
 			dispatch(changeTimeState(state))

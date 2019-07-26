@@ -1,12 +1,17 @@
 import {
-  SET_TIME,
-  CHANGE_TIME_STATE
+  RUN_TIME,
+  CHANGE_TIME_STATE,
+  CLEAR_TIME_ID,
 } from './actionsTypes'
 
-export function setTime(time){
+export function runTime(){
   return {
-    type: SET_TIME,
-    time
+    type: RUN_TIME,
+  }
+}
+export function clearTimeId(){
+  return {
+    type: CLEAR_TIME_ID,
   }
 }
 

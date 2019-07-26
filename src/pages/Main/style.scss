@@ -40,6 +40,7 @@
 		&__icon {
 			@include circle(48px, transparent, 2px, $DEEP_BLUE);
 			margin-right: 16px;
+			z-index:2;
 		}
 
 		&__title {

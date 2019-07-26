@@ -20,8 +20,8 @@ class TodoList extends Component {
     return todos
       .filter(item=> !item.isDone)
       .map(item => (
-        <Todo 
-          key={`done__todo__${item.id}`} 
+        <Todo
+          key={`todo__${item.id}`} 
           todo={item.text}
           onCheckTodo={()=>{changeTodoState(item.id)} }
           onChangeTodo={()=>{setDoing(item.id)}}
@@ -33,9 +33,9 @@ class TodoList extends Component {
     return todos
       .filter(item=> item.isDone)
       .map(item => (
-        <Done 
-          key={`done__todo__${item.id}`} 
-          done={item.text} 
+        <Done
+          key={`done__todo__${item.id}`}
+          done={item.text}
           pomodoroNumber={item.pomodoroNumber}
           onDeleteTodo={()=>{deleteTodo(item.id)}}
           onCheckTodo={()=>{changeTodoState(item.id)}}
